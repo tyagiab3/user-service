@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: visitly-assessment
+  profiles:
+    active: local
+
+# --- Logging ---
+logging:
+  config: classpath:log4j2.xml
+
+# --- Server ---
+server:
+  port: 8080

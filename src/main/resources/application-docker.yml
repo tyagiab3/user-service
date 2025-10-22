@@ -1,0 +1,44 @@
+# --- Spring Application ---
+spring:
+  application:
+    name: visitly-assessment
+  config:
+    activate:
+      on-profile: local
+  # --- MySQL Connection (Docker MySQL) ---
+  datasource:
+    url: jdbc:mysql://mysql:3306/visitlydb
+    username: visitly
+    password: visitly123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # --- JPA / Hibernate ---
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQLDialect
+
+  # --- Kafka Configuration ---
+  kafka:
+    bootstrap-servers: kafka:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: visitly-consumer-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
+
+# --- Logging ---
+logging:
+  level:
+    org.springframework.cache: TRACE
+  config: classpath:log4j2.xml
+
+# --- Server ---
+server:
+  port: 8080
