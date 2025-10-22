@@ -1,4 +1,5 @@
-# User Management Service  
+# User Management Service 
+### Author: Abhimanyyu Tyagi 
 **Spring Boot 3.x | JWT | MySQL | Kafka | Dockerized Backend Assignment**
 
 ![Java](https://img.shields.io/badge/Java-17-orange)
